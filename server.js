@@ -6,7 +6,8 @@ var url = require("url");
 
 // declare function to run the server
 // - parameter: 'route' - function from router module
-function start(route) {
+//   - parameter: the 'handle' object (from index)
+function start(route, handle) {
     // declare a function to answer requests to the server
     function onRequest (request, response) {
         // declare var holding the pathname
@@ -16,7 +17,7 @@ function start(route) {
         
         // call the route function from router module
         // (only shows the log output for now)
-        route(pathname);
+        route(handle, pathname);
         
         // build the response
         response.writeHead(200, {"Content-Type": "text/plain"});
