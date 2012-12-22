@@ -15,18 +15,14 @@ function start(route, handle) {
 
         console.log("Request for " + pathname + " received.");
         
-        // call the route function from router module
-        // (only shows the log output for now)
-        route(handle, pathname);
+        // call the route function from router module,
+        // with parameters: handle object, pathname, response
+        // (this will handle the actual request)
+        route(handle, pathname, response);
         
-        // build the response
-        response.writeHead(200, {"Content-Type": "text/plain"});
-        response.write("Hello World from " + pathname);
-        response.end();
     }
     // start the server on port 8888, define 'onRequest' as the callback function
     http.createServer(onRequest).listen(8888);
-
     console.log("Server has started.");    
 }
 
