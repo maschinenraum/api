@@ -6,9 +6,7 @@ var requestHandlers = require("./requestHandlers");
 // make object mapping paths to 'request.Handlers' functions
 var handle = {}
 handle["/"] = requestHandlers.start;
-handle["/start"] = requestHandlers.start;
-handle["/upload"] = requestHandlers.upload;
-handle["/show"] = requestHandlers.show;
+handle["/info"] = requestHandlers.info;
 
 // start server
 server.start(router.route, handle);
