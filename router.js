@@ -3,7 +3,7 @@
 // - 'handle' object
 // - 'pathname' function
 // - 'response' object
-function route(handle, pathname, response) {
+function route(handle, pathname, response, request) {
     console.log("Routing request for " + pathname);
     
     // check if we get a function for the received pathname from the handle object
@@ -12,7 +12,7 @@ function route(handle, pathname, response) {
         
         // 'handle' the pathname (call the corresponding function we got back from the object)
         // this will always call one of the requestHandlers
-        return handle[pathname](response);
+        return handle[pathname](response, request);
         
     } else {
         // if the 'handle' object has no function mapped to our pathname, it is an 404 error
