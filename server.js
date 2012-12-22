@@ -5,13 +5,18 @@ var http = require("http");
 var url = require("url");
 
 // declare function to run the server
-function start() {
+// - parameter: 'route' - function from router module
+function start(route) {
     // declare a function to answer requests to the server
     function onRequest (request, response) {
         // declare var holding the pathname
         var pathname = url.parse(request.url).pathname;
 
         console.log("Request for " + pathname + " received.");
+        
+        // call the route function from router module
+        // (only shows the log output for now)
+        route(pathname);
         
         // build the response
         response.writeHead(200, {"Content-Type": "text/plain"});
