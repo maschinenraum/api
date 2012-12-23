@@ -1,6 +1,7 @@
 // modules
 var querystring = require("querystring"),
-    fs = require("fs");    
+    fs = require("fs"),
+    door = require("./door_status");    
 
 // public methods
 // /start
@@ -37,11 +38,22 @@ function info(response) {
             
             // Set 'WIP' property to true
             mrData.work_in_progress = true;
-                        
-            // build the response
-            response.writeHead(200, {"Content-Type": "text/plain"});
-            response.write(JSON.stringify(mrData));
-            response.end();
+            
+            
+            // set the door status from twitter
+            mrData.open = null;
+            door.get(function(result) {
+                console.log("callback");
+                mrData.open = result;
+                
+                // Set timestamp to NOW
+                mrData.lastchange = Math.round(new Date().getTime() / 1000);
+                
+                // build the response
+                response.writeHead(200, {"Content-Type": "text/plain"});
+                response.write(JSON.stringify(mrData));
+                response.end();
+            } );
         }
     });
     
