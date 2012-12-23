@@ -18,9 +18,11 @@ function start(route, handle) {
         route(handle, pathname, response, request);
     }
     
-    // start the server on port 8888, define 'onRequest' as the callback function
-    http.createServer(onRequest).listen(8888);
-    console.log("Server has started.");    
+    // start the server, define 'onRequest' as the callback function
+    // - if we got a port from enivronment (ie. heroku), use it, otherwise use 8888
+    var port = process.env.PORT || 8888;
+    http.createServer(onRequest).listen(port);
+    console.log("Server has started on port " + port + ".");    
 }
 
 // export our start function (map public method to internal implementation function)
