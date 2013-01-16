@@ -38,24 +38,32 @@ function getDoorStatus(callback) {
             // parse received json data into native object
             var dataObj = JSON.parse(data);
         
+            // prepare result object
+            var result = {};
+            
+            // get timestamp
+            var timestamp = new Date(dataObj.status.created_at);
+            console.log(timestamp);
+            console.log(timestamp.getTime);
+            
             // make a string from the status.text in this object
             var doorString = JSON.stringify(dataObj.status.text)
             console.info('DOOR-STATUS: ' + doorString);
         
             // 'grep' this string
            if (doorString.indexOf("OFFEN") != -1) {
-               var door_open = true;
+               result.door_open = true;
                console.info("door_open: true");
            } else if (doorString.indexOf("GESCHLOSSEN") != -1) {
-               var door_open = false;
+               result.door_open = false;
                console.info("door_open: false");
            } else {
-               var door_open = null;
+               result.door_open = null;
                console.error("door_open: null");
            }
            
            // Callback
-           callback(door_open);
+           callback(result);
         
         });
     });

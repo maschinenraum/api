@@ -41,12 +41,12 @@ function info(response) {
             
             
             // set the door status from twitter
-            mrData.open = null;
+            //mrData.open = null;
             door.get(function(result) {
                 console.log("callback");
-                mrData.open = result;
+                mrData.open = result.door_open;
                 
-                // Set timestamp to NOW
+                // Set 'lastchange' timestamp to NOW
                 mrData.lastchange = Math.round(new Date().getTime() / 1000);
                 
                 // build the response
