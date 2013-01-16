@@ -20,7 +20,7 @@ function start(route, handle) {
     
     // start the server, define 'onRequest' as the callback function
     // - if we got a port from enivronment (ie. heroku, or foreman), use it, otherwise use 8888
-    var port = process.env.PORT || 8888;
+    var port = process.env.PORT || 9999;
     http.createServer(onRequest).listen(port);
     console.log("Server has started on port " + port + ".");    
 }
