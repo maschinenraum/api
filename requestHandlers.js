@@ -30,7 +30,7 @@ function spaceStatus(response, request, parameters) {
   console.log("Request handler 'spaceStatus' was called.");
   
   door.get(function(result) {
-      console.log("callback");
+      //console.info("callback");
       space.set("open", result.door_open);
       space.set("status", result.door_status);
                 
@@ -43,14 +43,21 @@ function spaceStatus(response, request, parameters) {
       // build the response
         // set HTTP headers
       response.writeHead(200, {
-        'Content-Type': 'application/json',
         'Cache-Control': 'no-cache',
+          'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*'
       });
-        // make JSON from data object, send this as response
-          // signature: JSON.stringify([theData], [aReplacerFunction], [theNumberOfSpaces]OR[aCharacterForIndent])
-      response.write(JSON.stringify(space.get(), null, 2)); 
+        // distinguish output formats
+      console.log("Output format: " + parameters.format);
+      if (parameters.format == ".txt") {
+          // make JSON from data object, send this as response
+            // signature: JSON.stringify([theData], [aReplacerFunction], [theNumberOfSpaces]OR[aCharacterForIndent])
+        response.write(JSON.stringify(space.get(), null, 2)); 
+      } else {
+        response.write(JSON.stringify(space.get(), null, null))
+      };
       response.end();
+      console.log("Response sent");
   } );
 };
 
