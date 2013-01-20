@@ -41,22 +41,20 @@ function spaceStatus(response) {
       // Set 'generated_at' timestamp to NOW
       space.set("generated_at", Math.round(new Date().getTime() / 1000));
                 
+      // build the response
+        // set HTTP headers
+      response.writeHead(200, {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'no-cache',
+        'Access-Control-Allow-Origin': '*'
+      });
+        // make JSON from data object, send this as response
+          // signature: JSON.stringify([theData], [aReplacerFunction], [theNumberOfSpaces]OR[aCharacterForIndent])
+      response.write(JSON.stringify(space.get(), null, 2)); 
+      response.end();
+  } );
+};
 
 // export public methods
 exports.home = home;
-exports.spaceStatus = spaceStatus;                // build the response
-                  // set HTTP headers
-                response.writeHead(200, {
-                  'Content-Type': 'application/json',
-                  'Cache-Control': 'no-cache',
-                  'Access-Control-Allow-Origin': '*'
-                });
-                  // make JSON from data object, send this as response
-                    // signature: JSON.stringify([theData], [aReplacerFunction], [theNumberOfSpaces]OR[aCharacterForIndent])
-                response.write(JSON.stringify(mrData, null, 2)); 
-                response.end();
-            } );
-        }
-    });
-    
-}
+exports.spaceStatus = spaceStatus;
