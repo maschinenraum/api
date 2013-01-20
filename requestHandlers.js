@@ -27,45 +27,24 @@ function home(response) {
 }
 
 // GET /status.json
-    
-    // get json file from file system (it has the static info)
-    fs.readFile("./data/maschinenraum.json", "binary", function(error, file) {
-        if(error) {
-            // In case of error, we respond with error
-            response.writeHead(500, {"Content-Type": "text/plain" });
-            response.write("Error 500");
-            response.write("Could not get download static file.");
-            response.write("Message: " + error + "\n");
-            response.end();
-        } else {
-            // If there is no error, we continue
-            
-            // Read the downloaded file into JS object
-            var mrData = JSON.parse(file);
-            //console.log(file);
-            //console.log(mrData);
-            
-            // DEV: Set 'WIP' property to true
-            //mrData.work_in_progress = true;
-            
-            
-            // set the door status from twitter
-              // set `open` to `null` in case of error (it is a mandatory field)
-            mrData.open = null;
-            door.get(function(result) {
-                console.log("callback");
-                mrData.open = result.door_open;
-                mrData.status = result.door_status;
 function spaceStatus(response) {
   console.log("Request handler 'spaceStatus' was called.");
+  
+  door.get(function(result) {
+      console.log("callback");
+      space.set("open", result.door_open);
+      space.set("status", result.door_status);
                 
-                // Set 'lastchange' timestamp to time of tweet
-                mrData.lastchange = Math.round(result.timestamp.getTime() / 1000);
+      // Set 'lastchange' timestamp to time of tweet
+      space.set("lastchange", Math.round(result.timestamp.getTime() / 1000));
 
-                // Set 'generated_at' timestamp to NOW
-                mrData.generated_at = Math.round(new Date().getTime() / 1000);
+      // Set 'generated_at' timestamp to NOW
+      space.set("generated_at", Math.round(new Date().getTime() / 1000));
                 
-                // build the response
+
+// export public methods
+exports.home = home;
+exports.spaceStatus = spaceStatus;                // build the response
                   // set HTTP headers
                 response.writeHead(200, {
                   'Content-Type': 'application/json',
@@ -81,7 +60,3 @@ function spaceStatus(response) {
     });
     
 }
-
-// export public methods
-exports.home = home;
-exports.spaceStatus = spaceStatus;
