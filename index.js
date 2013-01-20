@@ -7,7 +7,7 @@ var requestHandlers = require("./requestHandlers");
 // make object mapping paths to 'request.Handlers' functions
 var handle = {}
 handle["/"] = requestHandlers.home;
-handle["/status.json"] = requestHandlers.info;
+handle["/status.json"] = requestHandlers.spaceStatus;
 
 // start server
 server.start(router.route, handle);

@@ -27,8 +27,6 @@ function home(response) {
 }
 
 // GET /status.json
-function info(response) {
-    console.log("Request handler 'info' was called.");
     
     // get json file from file system (it has the static info)
     fs.readFile("./data/maschinenraum.json", "binary", function(error, file) {
@@ -58,6 +56,8 @@ function info(response) {
                 console.log("callback");
                 mrData.open = result.door_open;
                 mrData.status = result.door_status;
+function spaceStatus(response) {
+  console.log("Request handler 'spaceStatus' was called.");
                 
                 // Set 'lastchange' timestamp to time of tweet
                 mrData.lastchange = Math.round(result.timestamp.getTime() / 1000);
@@ -84,4 +84,4 @@ function info(response) {
 
 // export public methods
 exports.home = home;
-exports.info = info;
+exports.spaceStatus = spaceStatus;
