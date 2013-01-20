@@ -5,8 +5,8 @@ var querystring = require("querystring"),
 
 // public methods
 // /start
-function start(response) {    
-    console.log("Request handler 'start' was called.");
+function home(response) {    
+    console.log("Request handler 'home' was called.");
     
     var body = 'OH HAI!';
     body += '\n\nMaybe you want to GET /status.json';
@@ -73,5 +73,5 @@ function info(response) {
 }
 
 // export public methods
-exports.start = start;
+exports.home = home;
 exports.info = info;
