@@ -15,7 +15,7 @@ function home(response) {
     console.log("Request handler 'home' was called.");
     
     var body = "NODE.JS SpaceAPI SERVER\n=======================\n\n";
-    body += "Space: " + space.get("space") + " — " + space.get("tagline");
+    body += "Space: " + space.get("space") + " -- " + space.get("tagline");
     body += '\n\nMaybe you want to GET /status.json';
     body += '\n\nSome static info:\n'
     body += JSON.stringify(space.get(), null, 2);
