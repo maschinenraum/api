@@ -25,8 +25,8 @@ function home(response) {
     response.end();
 }
 
-// GET /status.json
-function spaceStatus(response) {
+// GET /status
+function spaceStatus(response, request, parameters) {
   console.log("Request handler 'spaceStatus' was called.");
   
   door.get(function(result) {

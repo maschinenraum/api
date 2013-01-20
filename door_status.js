@@ -32,8 +32,8 @@ function getDoorStatus(callback) {
         
         // listener: do stuff when request ended
         res.on('end', function() {
-        	console.info('HTTP-STATUS: ' + res.statusCode);
-	    console.info('BODY: ' + data);
+          console.log('HTTP-STATUS: ' + res.statusCode);
+          //console.info('BODY: ' + data);
 
             // parse received json data into native object
             var dataObj = JSON.parse(data);
