@@ -1,2 +1,2 @@
 run:
-	foreman start
+	forever --watch index.js
