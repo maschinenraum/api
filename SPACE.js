@@ -1,20 +1,26 @@
-// SPACE.js -- API module implementing SpaceAPI spec 
-var door = require("./door_status");
+// SPACE.js -- API module implementing SpaceAPI spec
+// usage: var SPACE = require(./SPACE);
+
+var door  = require("./door_status")
+  , fs    = require('fs');
 
 // 'SPACE' pseudo-class
-var SPACE = function(name) {
+// usage: via 'create' function
+var SPACE = function(options) {
   // closure: this.argument <> argument
-  this.name = name;
+  this.options = options;
   
   //setup
-  this.status = {};
-  this.status = {
-    "status" : "Hello World"
-  };
-  this.status.name = name;
+  this.data = {};
+  // this.data = {
+  //     "status" : "Hello World"
+  //   };
+  this.data = JSON.parse(
+    fs.readFileSync(this.options.staticInfoFile, 'utf8')
+  );
+  console.log(this.data);
 };
 
-// defince combined setter and getter; 'inspired' by mongoose
 SPACE.prototype.set = function (key, value) {
   if (arguments.length == 1) {
     return this.status[key];
@@ -25,7 +31,8 @@ SPACE.prototype.set = function (key, value) {
 };
 SPACE.prototype.get = SPACE.prototype.set;
 
-
-module.exports.create = function(name) {
-  return new SPACE(name);
+// 'create' function
+// usage: var space = SPACE.create(options);
+module.exports.create = function(options) {
+  return new SPACE(options);
 };
