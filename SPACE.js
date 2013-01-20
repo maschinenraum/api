@@ -21,11 +21,17 @@ var SPACE = function(options) {
   console.log(this.data);
 };
 
+// define combined setter and getter; 'inspired' by mongoose
+// usage: space.get()             -> gets all the data
+//        space.get("open")       -> gets a property
+//        space.set("open", true) -> sets a property
 SPACE.prototype.set = function (key, value) {
-  if (arguments.length == 1) {
-    return this.status[key];
+  if        (arguments.length == 0) {
+    return this.data;
+  } else if (arguments.length == 1) {
+    return this.data[key];
   } else {
-    this.status[key] = value;
+    this.data[key] = value;
     return this;
   };
 };
