@@ -1,8 +1,8 @@
 // modules
-var querystring = require("querystring"),
-    fs = require("fs"),
-    SPACE = require("./SPACE"),
-    door = require("./door_status");
+var querystring   = require('querystring'),
+    fs            = require('fs'),
+    SPACE         = require('./SPACE'),
+    door          = require('./door_status');
 
 // setup SPACE module with options
 var spaceOptions = {
@@ -15,13 +15,13 @@ function home(response) {
     console.log("Request handler 'home' was called.");
     
     // build response
-    var body = "NODE.JS SpaceAPI SERVER\n=======================\n\n";
-    body += "Space: " + space.get("space") + " -- " + space.get("tagline");
-    body += "\n\nMaybe you want to GET /resource.format";
-    body += "\n\nResources: [ "status" ]";
-    body += "\nFormats: [ "json", "txt" ]";
-    body += "\nExample: /status.json";
-    body += "\n\nSome static info:\n";
+    var body = 'NODE.JS SpaceAPI SERVER\n=======================\n\n';
+    body += 'Space: ' + space.get('space') + ' -- ' + space.get('tagline');
+    body += '\n\nMaybe you want to GET /resource.format';
+    body += '\n\nResources: [ "status" ]';
+    body += '\nFormats: [ "json", "txt" ]';
+    body += '\nExample: /status.json';
+    body += '\n\nSome static info:\n';
     body += JSON.stringify(space.get(), null, 2);
     
     // send response
@@ -49,9 +49,9 @@ function spaceStatus(response, request, parameters) {
       // build the response
         // set HTTP headers
       response.writeHead(200, {
-        'Cache-Control': 'no-cache',
-          'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        "Cache-Control": "no-cache",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       });
         // distinguish output formats
       console.log("Output format: " + parameters.format);

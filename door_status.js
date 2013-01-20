@@ -49,7 +49,7 @@ function getDoorStatus(space, callback) {
             
             // make a string from the status.text in this object
             var doorString = JSON.stringify(dataObj.status.text)
-            console.info('DOOR-STATUS: ' + doorString);
+            console.info("DOOR-STATUS: " + doorString);
         
             // 'grep' this string
            if (doorString.indexOf("OFFEN") != -1) {

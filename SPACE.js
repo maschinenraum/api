@@ -1,7 +1,7 @@
 // SPACE.js -- API module implementing SpaceAPI spec
 // usage: var SPACE = require(./SPACE);
 
-var door  = require("./door_status")
+var door  = require('./door_status')
   , fs    = require('fs');
 
 // 'SPACE' pseudo-class
@@ -12,13 +12,10 @@ var SPACE = function(options) {
   
   //setup
   this.data = {};
-  // this.data = {
-  //     "status" : "Hello World"
-  //   };
   this.data = JSON.parse(
     fs.readFileSync(this.options.staticInfoFile, 'utf8')
   );
-  console.log(this.data);
+  //console.info(this.data);
 };
 
 // define combined setter and getter; 'inspired' by mongoose

@@ -1,7 +1,7 @@
 // require modules
-var http  = require("http")
-  , url   = require("url")
-  , path  = require("path");
+var http  = require('http')
+  , url   = require('url')
+  , path  = require('path');
 
 // declare function to run the server
 // - parameter: 'route' - function from router module
