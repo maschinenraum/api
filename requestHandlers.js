@@ -13,10 +13,9 @@ var space = SPACE.create(spaceOptions);
 // GET /
 function home(response) {    
     console.log("Request handler 'home' was called.");
-    console.log(space.get("space"));
     
-    var body = "";
-    body += space.get("space");
+    var body = "NODE.JS SpaceAPI SERVER\n=======================\n\n";
+    body += "Space: " + space.get("space") + " — " + space.get("tagline");
     body += '\n\nMaybe you want to GET /status.json';
     body += '\n\nSome static info:\n'
     body += JSON.stringify(space.get(), null, 2);
