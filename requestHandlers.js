@@ -46,6 +46,7 @@ function info(response) {
             door.get(function(result) {
                 console.log("callback");
                 mrData.open = result.door_open;
+                mrData.status = result.door_status;
                 
                 // Set 'lastchange' timestamp to time of tweet
                 mrData.lastchange = Math.round(result.timestamp.getTime() / 1000);

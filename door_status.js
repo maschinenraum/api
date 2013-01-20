@@ -54,9 +54,11 @@ function getDoorStatus(callback) {
             // 'grep' this string
            if (doorString.indexOf("OFFEN") != -1) {
                result.door_open = true;
+               result.door_status = "Door is open!";
                console.info("door_open: true");
            } else if (doorString.indexOf("GESCHLOSSEN") != -1) {
                result.door_open = false;
+               result.door_status = "Door is closed!";
                console.info("door_open: false");
            } else {
                result.door_open = null;
