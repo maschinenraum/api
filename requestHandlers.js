@@ -51,7 +51,7 @@ function info(response) {
                 
                 // build the response
                 response.writeHead(200, {"Content-Type": "text/plain"});
-                response.write(JSON.stringify(mrData));
+                response.write(JSON.stringify(mrData, null, 2)); // signature: JSON.stringify([theData], [aReplacerFunction], [theNumberOfSpaces]OR[aCharacterForIndent])
                 response.end();
             } );
         }
