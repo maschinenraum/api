@@ -29,7 +29,7 @@ function home(response) {
 function spaceStatus(response, request, parameters) {
   console.log("Request handler 'spaceStatus' was called.");
   
-  door.get(function(result) {
+  door.get(space, function(result) {
       //console.info("callback");
       space.set("open", result.door_open);
       space.set("status", result.door_status);
