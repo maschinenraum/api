@@ -1,8 +1,8 @@
 // modules
-var querystring = require("querystring"),
-    fs = require("fs"),
-    SPACE = require("./SPACE"),
-    door = require("./door_status");
+var querystring   = require('querystring'),
+    fs            = require('fs'),
+    SPACE         = require('./SPACE'),
+    door          = require('./door_status');
 
 // setup SPACE module with options
 var spaceOptions = {
@@ -49,9 +49,9 @@ function spaceStatus(response, request, parameters) {
       // build the response
         // set HTTP headers
       response.writeHead(200, {
-        'Cache-Control': 'no-cache',
-          'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        "Cache-Control": "no-cache",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
       });
         // distinguish output formats
       console.log("Output format: " + parameters.format);

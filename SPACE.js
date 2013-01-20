@@ -1,7 +1,7 @@
 // SPACE.js -- API module implementing SpaceAPI spec
 // usage: var SPACE = require(./SPACE);
 
-var door  = require("./door_status")
+var door  = require('./door_status')
   , fs    = require('fs');
 
 // 'SPACE' pseudo-class
