@@ -1,6 +1,22 @@
 {
   "space" : "Maschinenraum",
-  "url" : "https://maschinenraum.tk",
+  "url" : "http://maschinenraum.tk",
+  "address" : "Marienstr. 18, 99423 Weimar, Germany, Earth, Milky Way",
+  "contact" : {
+    "phone": "+493643583031",
+    "irc" : "irc://freenode/#maschinenraum",
+    "twitter" : "@maschinenrauM18",
+    "email" : "mr@m18.uni-weimar.de",
+    "ml" : "feint@lists.subsignal.org"
+  },
+  "lat" : "50.9749425174",
+  "lon" : "11.3295217752",
+  "feeds":[
+    {"name":"blog","type":"application/rss+xml","url":"http://blog.maschinenraum.tk/feed/rss2/"},
+    {"name":"facebook","type":"application/rss+xml","url":"https://www.facebook.com/feeds/page.php?id=273838003013&format=rss20"},
+    {"name":"github","type":"application/rss+xml","url":"https://github.com/maschinenraum.atom"},
+    {"name":"calendar","type":"text/calendar","url":"https://revspace.nl/revspace.ical"}
+  ],
   "icon" : {
     "open" : "http://fakeimg.pl/100x100/00ff00/444/?text=OPEN&font=bebas",
     "closed" : "http://fakeimg.pl/100x100/ff0000/444/?text=CLOSED&font=bebas"
