@@ -1,19 +1,25 @@
 // modules
 var querystring = require("querystring"),
     fs = require("fs"),
-    SPACE = require("./SPACE")
+    SPACE = require("./SPACE"),
     door = require("./door_status");
-    
-var space = SPACE.create("Maschinenraum");
+
+// setup SPACE module with options
+var spaceOptions = {
+      staticInfoFile : "./data/maschinenraum.json",
+};
+var space = SPACE.create(spaceOptions);
 
 // GET /
 function home(response) {    
     console.log("Request handler 'home' was called.");
-    console.log(space.get("name"));
+    console.log(space.get("space"));
     
     var body = "";
-    body += space.get("name");
+    body += space.get("space");
     body += '\n\nMaybe you want to GET /status.json';
+    body += '\n\nSome static info:\n'
+    body += JSON.stringify(space.get(), null, 2);
     
     response.writeHead(200, {"Content-Type": "text/plain"});
     response.write(body);
