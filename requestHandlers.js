@@ -49,12 +49,12 @@ function spaceStatus(response, request, parameters) {
       });
         // distinguish output formats
       console.log("Output format: " + parameters.format);
-      if (parameters.format == ".txt") {
+      if (parameters.format == ".json") {
           // make JSON from data object, send this as response
             // signature: JSON.stringify([theData], [aReplacerFunction], [theNumberOfSpaces]OR[aCharacterForIndent])
-        response.write(JSON.stringify(space.get(), null, 2)); 
+        response.write(JSON.stringify(space.get(), null, null)); 
       } else {
-        response.write(JSON.stringify(space.get(), null, null))
+        response.write(JSON.stringify(space.get(), null, 2))
       };
       response.end();
       console.log("Response sent");
