@@ -42,9 +42,10 @@ function getDoorStatus(callback) {
             var result = {};
             
             // get timestamp
-            var timestamp = new Date(dataObj.status.created_at);
-            console.log(timestamp);
-            console.log(timestamp.getTime);
+            result.timestamp = new Date(dataObj.status.created_at);
+            console.log(result.timestamp);
+            console.log(result.timestamp.getTime());
+            
             
             // make a string from the status.text in this object
             var doorString = JSON.stringify(dataObj.status.text)

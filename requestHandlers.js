@@ -47,8 +47,11 @@ function info(response) {
                 console.log("callback");
                 mrData.open = result.door_open;
                 
-                // Set 'lastchange' timestamp to NOW
-                mrData.lastchange = Math.round(new Date().getTime() / 1000);
+                // Set 'lastchange' timestamp to time of tweet
+                mrData.lastchange = Math.round(result.timestamp.getTime() / 1000);
+
+                // Set 'generated_at' timestamp to NOW
+                mrData.generated_at = Math.round(new Date().getTime() / 1000);
                 
                 // build the response
                   // set HTTP headers
