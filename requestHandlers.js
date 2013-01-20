@@ -3,8 +3,7 @@ var querystring = require("querystring"),
     fs = require("fs"),
     door = require("./door_status");    
 
-// public methods
-// /start
+// GET /
 function home(response) {    
     console.log("Request handler 'home' was called.");
     
@@ -16,7 +15,7 @@ function home(response) {
     response.end();
 }
 
-// spaceapi: output JSON
+// GET /status.json
 function info(response) {
     console.log("Request handler 'info' was called.");
     
