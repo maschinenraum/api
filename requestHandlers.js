@@ -41,7 +41,8 @@ function info(response) {
             
             
             // set the door status from twitter
-            //mrData.open = null;
+              // set `open` to `null` in case of error (it is a mandatory field)
+            mrData.open = null;
             door.get(function(result) {
                 console.log("callback");
                 mrData.open = result.door_open;
