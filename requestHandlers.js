@@ -1,13 +1,18 @@
 // modules
 var querystring = require("querystring"),
     fs = require("fs"),
-    door = require("./door_status");    
+    SPACE = require("./SPACE")
+    door = require("./door_status");
+    
+var space = SPACE.create("Maschinenraum");
 
 // GET /
 function home(response) {    
     console.log("Request handler 'home' was called.");
+    console.log(space.get("name"));
     
-    var body = 'OH HAI!';
+    var body = "";
+    body += space.get("name");
     body += '\n\nMaybe you want to GET /status.json';
     
     response.writeHead(200, {"Content-Type": "text/plain"});
