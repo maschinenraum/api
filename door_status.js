@@ -3,7 +3,7 @@ var https = require('https');
 // get live door status
 // TODO: move to own backend before API v1 is shut down
 
-function getDoorStatus(callback) {
+function getDoorStatus(space, callback) {
     console.log("Door status need to be determined.");
     
     // HTTPS request
@@ -32,8 +32,8 @@ function getDoorStatus(callback) {
         
         // listener: do stuff when request ended
         res.on('end', function() {
-        	console.info('HTTP-STATUS: ' + res.statusCode);
-	    console.info('BODY: ' + data);
+          console.log('HTTP-STATUS: ' + res.statusCode);
+          //console.info('BODY: ' + data);
 
             // parse received json data into native object
             var dataObj = JSON.parse(data);
@@ -54,11 +54,11 @@ function getDoorStatus(callback) {
             // 'grep' this string
            if (doorString.indexOf("OFFEN") != -1) {
                result.door_open = true;
-               result.door_status = "Door is open!";
+               result.door_status = space.get("_status_open");
                console.info("door_open: true");
            } else if (doorString.indexOf("GESCHLOSSEN") != -1) {
                result.door_open = false;
-               result.door_status = "Door is closed!";
+               result.door_status = space.get("_status_closed");
                console.info("door_open: false");
            } else {
                result.door_open = null;

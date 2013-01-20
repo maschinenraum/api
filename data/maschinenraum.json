@@ -1,5 +1,8 @@
 {
   "space" : "Maschinenraum",
+  "tagline" : "we can haz raum",
+  "_status_open" : "Door is open!",
+  "_status_closed" : "Door is closed!",
   "url" : "http://maschinenraum.tk",
   "address" : "Marienstr. 18, 99423 Weimar, Germany, Earth, Milky Way",
   "contact" : {
@@ -21,8 +24,8 @@
     "closed" : "http://fakeimg.pl/100x100/ff0000/444/?text=CLOSED&font=bebas"
   },
   "logo" : "http://fakeimg.pl/500x200/000000/00aa00/?text=maschinenraum&font=bebas",
-  "open" : false,
+  "open" : null,
   "lastchange" : 1356200236,
   "api" : "0.12",
-  "api_backend" : "0.0.1"
+  "api_backend" : "0.1.0"
 }

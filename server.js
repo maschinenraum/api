@@ -1,8 +1,7 @@
 // require modules
-// - use 'http' module (aka server)
-var http = require("http");
-// user 'url' module (get info about the request)
-var url = require("url");
+var http  = require("http")
+  , url   = require("url")
+  , path  = require("path");
 
 // declare function to run the server
 // - parameter: 'route' - function from router module
@@ -10,12 +9,15 @@ var url = require("url");
 function start(route, handle) {
     // declare a function to answer requests to the server
     function onRequest (request, response) {
-        // declare var holding the pathname
-        var pathname = url.parse(request.url).pathname;
-
-        console.log("Request for " + pathname + " received.");
+      // declare var holding the params
+      var pathname = url.parse(request.url).pathname;
+      var parameters = {};
+      parameters.format = path.extname(pathname);
+      parameters.resource = path.basename(pathname, parameters.format);
         
-        route(handle, pathname, response, request);
+      console.log('Request received for:"' + parameters.resource + '"; in format: "' + parameters.format + '"');
+        
+      route(handle, parameters, response, request);
     }
     
     // start the server, define 'onRequest' as the callback function
