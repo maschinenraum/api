@@ -50,14 +50,15 @@ function info(response) {
                 mrData.lastchange = Math.round(new Date().getTime() / 1000);
                 
                 // build the response
-                //// set HTTP headers
+                  // set HTTP headers
                 response.writeHead(200, {
                   'Content-Type': 'application/json',
                   'Cache-Control': 'no-cache',
                   'Access-Control-Allow-Origin': '*'
                 });
-                //// make JSON from data object, send this as response
-                response.write(JSON.stringify(mrData, null, 2)); // signature: JSON.stringify([theData], [aReplacerFunction], [theNumberOfSpaces]OR[aCharacterForIndent])
+                  // make JSON from data object, send this as response
+                    // signature: JSON.stringify([theData], [aReplacerFunction], [theNumberOfSpaces]OR[aCharacterForIndent])
+                response.write(JSON.stringify(mrData, null, 2)); 
                 response.end();
             } );
         }
