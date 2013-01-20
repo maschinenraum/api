@@ -23,5 +23,6 @@
   "logo" : "http://fakeimg.pl/500x200/000000/00aa00/?text=maschinenraum&font=bebas",
   "open" : false,
   "lastchange" : 1356200236,
-  "api" : "0.12"
+  "api" : "0.12",
+  "api_backend" : "0.0.1"
 }

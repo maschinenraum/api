@@ -36,8 +36,8 @@ function info(response) {
             //console.log(file);
             //console.log(mrData);
             
-            // Set 'WIP' property to true
-            mrData.work_in_progress = true;
+            // DEV: Set 'WIP' property to true
+            //mrData.work_in_progress = true;
             
             
             // set the door status from twitter
