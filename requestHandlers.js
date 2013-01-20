@@ -10,22 +10,28 @@ var spaceOptions = {
 };
 var space = SPACE.create(spaceOptions);
 
-// GET /
+// GET / (home)
 function home(response) {    
     console.log("Request handler 'home' was called.");
     
+    // build response
     var body = "NODE.JS SpaceAPI SERVER\n=======================\n\n";
     body += "Space: " + space.get("space") + " -- " + space.get("tagline");
-    body += '\n\nMaybe you want to GET /status.json';
-    body += '\n\nSome static info:\n'
+    body += "\n\nMaybe you want to GET /resource.format";
+    body += "\n\nResources: [ "status" ]";
+    body += "\nFormats: [ "json", "txt" ]";
+    body += "\nExample: /status.json";
+    body += "\n\nSome static info:\n";
     body += JSON.stringify(space.get(), null, 2);
     
+    // send response
     response.writeHead(200, {"Content-Type": "text/plain"});
     response.write(body);
     response.end();
+    console.log("Response sent.");
 }
 
-// GET /status
+// GET /status (SpaceAPI)
 function spaceStatus(response, request, parameters) {
   console.log("Request handler 'spaceStatus' was called.");
   
