@@ -15,7 +15,7 @@ var SPACE = function(options) {
   this.data = JSON.parse(
     fs.readFileSync(this.options.staticInfoFile, 'utf8')
   );
-  this.data['api_host'] = process.env.APIHOST || "unknown";
+  this.data['api_host'] = process.env.SPC_APIHOST || "unknown";
   //console.info(this.data);
 };
 

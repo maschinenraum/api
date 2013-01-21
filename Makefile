@@ -1,2 +1,2 @@
 run:
-	forever --watch index.js
+	export SPC_APIHOST=dev && forever --watch index.js
