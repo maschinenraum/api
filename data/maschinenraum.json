@@ -12,8 +12,8 @@
     "email" : "mr@m18.uni-weimar.de",
     "ml" : "feint@lists.subsignal.org"
   }
-, "lat" : "50.9749425174"
-, "lon" : "11.3295217752"
+, "lat" : 50.9749425174
+, "lon" : 11.3295217752
 , "feeds":[
     {"name":"blog","type":"application/rss+xml","url":"http://blog.maschinenraum.tk/feed/rss2/"}
 ,  {"name":"facebook","type":"application/rss+xml","url":"https://www.facebook.com/feeds/page.php?id=273838003013&format=rss20"}
