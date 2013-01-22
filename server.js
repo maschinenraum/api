@@ -1,17 +1,18 @@
 // require modules
-var http  = require(http)
-  , url   = require(url)
-  , path  = require(path);
+var http  = require('http')
+  , url   = require('url')
+  , path  = require('path');
 
+var pathname
+  , parameters  = {};
+  
 // declare function to run the server
 // - parameter: 'route' - function from router module
 //   - parameter: the 'handle' object (from index)
 function start(route, handle) {
     // declare a function to answer requests to the server
     function onRequest (request, response) {
-      // declare var holding the params
-      var pathname = url.parse(request.url).pathname;
-      var parameters = {};
+      pathname = url.parse(request.url).pathname;        
       parameters.format = path.extname(pathname);
       parameters.resource = path.basename(pathname, parameters.format);
         
