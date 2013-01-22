@@ -5,7 +5,7 @@ var requestHandlers = require("./requestHandlers");
 
 // Router: setup
 // make object mapping paths to 'request.Handlers' functions
-var handle = {}
+var handle = {};
 handle[""] = requestHandlers.home;
 handle["status"] = requestHandlers.spaceStatus;
 handle["api"] = requestHandlers.spaceStatus;

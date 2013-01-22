@@ -1,14 +1,14 @@
 // modules
-var querystring   = require('querystring'),
-    fs            = require('fs'),
-    SPACE         = require('./SPACE'),
-    door          = require('./door_status');
+var querystring   = require('querystring')
+  , fs            = require('fs')
+  , SPACE         = require('./SPACE')
+  , door          = require('./door_status');
 
 // setup SPACE module with options
 var spaceOptions = {
       staticInfoFile : "./data/maschinenraum.json",
-};
-var space = SPACE.create(spaceOptions);
+}
+  , space = SPACE.create(spaceOptions);
 
 // GET / (home)
 function home(response) {    
@@ -55,17 +55,17 @@ function spaceStatus(response, request, parameters) {
       });
         // distinguish output formats
       console.log("Output format: " + parameters.format);
-      if (parameters.format == ".json") {
+      if (parameters.format === ".json") {
           // make JSON from data object, send this as response
             // signature: JSON.stringify([theData], [aReplacerFunction], [theNumberOfSpaces]OR[aCharacterForIndent])
         response.write(JSON.stringify(space.get(), null, null)); 
       } else {
-        response.write(JSON.stringify(space.get(), null, 2))
-      };
+        response.write(JSON.stringify(space.get(), null, 2));
+      }
       response.end();
       console.log("Response sent");
   } );
-};
+}
 
 // export public methods
 exports.home = home;

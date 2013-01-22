@@ -22,7 +22,7 @@ function route(handle, parameters, response, request) {
         //console.info(request);
         
         response.writeHead(404, {"Content-Type": "text/plain"});
-        var msg = "404 Not found"
+        var msg = "404 Not found";
         response.writeHead(msg);
         response.writeHead(msg + "\n\n No resource found for " + parameters.resource);
         response.end();
