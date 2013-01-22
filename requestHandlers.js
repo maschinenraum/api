@@ -11,7 +11,7 @@ var spaceOptions = {
   , space = SPACE.create(spaceOptions);
 
 // GET / (home)
-function home(response) {    
+function home(request, response) {    
     console.log("Request handler 'home' was called.");
     
     // build response
@@ -32,7 +32,7 @@ function home(response) {
 }
 
 // GET /status (SpaceAPI)
-function spaceStatus(response, request, parameters) {
+function spaceStatus(request, response, parameters) {
   console.log("Request handler 'spaceStatus' was called.");
   
   door.get(space, function(result) {
