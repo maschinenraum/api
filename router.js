@@ -10,6 +10,9 @@ function route(handle, parameters, response, request) {
   if (typeof handle[parameters.resource] === 'function') {
       console.log("request handler found for resource: " + parameters.resource);
         
+      // 'handle' the pathname (call the corresponding function we got back from the object)
+      // this will always call one of the requestHandlers
+      return handle[parameters.resource](response, request, parameters);
   } else {
       // if the 'handle' object has no function mapped to our pathname,  it is a 404 error.
       // in this case, we build the response right here
@@ -19,12 +22,9 @@ function route(handle, parameters, response, request) {
       response.writeHead(404, {"Content-Type": "text/plain"});
       var msg = "404 Not found";
       response.writeHead(msg);
-      response.writeHead(msg + "\n\n No resource found for " + parameters.resource);
+      response.write(msg + "\n\nNo resource found for " + parameters.resource);
       response.end();
   }
-    // 'handle' the pathname (call the corresponding function we got back from the object)
-    // this will always call one of the requestHandlers
-    return handle[parameters.resource](response, request, parameters);
 }
 
 // export the 'route' method
