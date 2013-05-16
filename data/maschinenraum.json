@@ -7,7 +7,7 @@
 , "address" : "Marienstr. 18, 99423 Weimar, Germany, Earth, Milky Way"
 , "contact" : {
     "phone": "+493643583031",
-    "irc" : "irc://freenode/#maschinenraum",
+    "irc" : "irc://freenode/maschinenraum",
     "twitter" : "@maschinenrauM18",
     "email" : "mr@m18.uni-weimar.de",
     "ml" : "feint@lists.subsignal.org"
